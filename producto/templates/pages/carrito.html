@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Carrito de compras</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for elemento in elementos %}
+        <tr>
+            <td>{{ elemento.producto.nombre }}</td>
+            <td>{{ elemento.cantidad }}</td>
+            <td>{{ elemento.producto.precio }}</td>
+            <td>{{ elemento.total }}</td>
+            <td>
+                <a href="{% url 'eliminar_del_carrito' elemento.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Total: {{ total }}</h3>
+{% endblock %}
